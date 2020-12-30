@@ -1,0 +1,12 @@
+node_modules
+venv
+__pycache__
+dist
+
+_ad_
+_test_
+
+yarn.lock
+.DS_Store
+*.wav
+*.otf
