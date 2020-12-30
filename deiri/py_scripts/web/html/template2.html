@@ -1,0 +1,9 @@
+<!-- No header & clock ! -->
+
+{% extends './master.html' %}
+
+{% block head %}
+{% with sub_css = '1' %}
+{% include "./parts/head.html" %}
+{% endwith %}
+{% endblock %}

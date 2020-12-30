@@ -1,0 +1,16 @@
+{% extends './template2.html' %}
+
+{% block tail_scripts %}
+<script type="text/javascript">
+    let device = eel.connectDevice()();
+    device.then((d, a) => {
+        if(d){
+            window.location.href="http://localhost:8080/html/contents/main.html";
+        } else {
+            window.location.href="http://localhost:8080/html/contents/error.html";
+        };
+        }).cacth((err) => {
+            console.log(err)
+        });
+</script>
+{% endblock %}

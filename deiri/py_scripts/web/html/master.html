@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+{% block head %}{% endblock %}
+
+<body>
+    {% block header %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script type="text/javascript" src="/js/sleep.js"></script>
+    <script type="text/javascript" src="/js/gotohome.js"></script>
+
+    {% block tail_scripts1 %}{% endblock %}
+
+    {% block tail_scripts %}{% endblock %}
+    <img class="logo" src="/image/logo-icon.png">
+</body>
+
+</html>

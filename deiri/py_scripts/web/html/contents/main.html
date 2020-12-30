@@ -1,0 +1,18 @@
+{% extends './template.html' %}
+
+{% block content %}
+<div class='h1'><i class="material-icons">people</i>Member</div>
+<div id="members"></div>
+{% include "./parts/footer.html" %}
+{% endblock %}
+
+{% block tail_scripts %}
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript">
+    getMembers();
+
+    //const intervalCloseAd = setInterval(()=>{
+    //    confirmChecked();
+    //}, 60*1000);
+</script>
+{% endblock %}

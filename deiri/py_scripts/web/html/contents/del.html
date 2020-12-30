@@ -1,0 +1,27 @@
+{% extends './template.html' %}
+
+{% block title %}
+dlete | deiri
+{% endblock %}
+
+{% block head_scripts %}
+{% endblock %}
+
+{% block content %}
+<div class='h1'><i class="material-icons">delete</i>Delete</div>
+<form id="list"></form>
+<div class="line">
+    <input class="btn delete" type="button" onclick="del()" value="delete">
+</div>
+<br>
+{% include "./parts/footer.html" %}
+{% endblock %}
+
+{% block tail_scripts %}
+<script type="text/javascript" src="/js/del.js"></script>
+<script type="text/javascript">
+    wait();  // 👽 長時間の放置は自動的にホームへ遷移させます。
+
+    getAllMember();
+</script>
+{% endblock %}

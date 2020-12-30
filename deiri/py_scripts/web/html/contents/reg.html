@@ -1,0 +1,25 @@
+{% extends './template.html' %}
+
+{% block content %}
+<div class='h1'><i class="material-icons">account_circle</i>Registration</div>
+<div class="line">
+   <div class="tag">number</div>
+    <input class="ip" type="text" id="number" value="" placeholder="Student ID">
+    <input href="#"  type="button" class="btn" onclick="reading()" value="読込">
+</div>
+<div class="line">
+    <div class="tag">name</div>
+    <input class="ip"  type="text" id="name" value="" placeholder="Your Name">
+    <input class="btn" type="button" onclick="reg()" value="登録">
+</div>
+<input  type="hidden"  id="idm" value="">
+<br>
+{% include "./parts/footer.html" %}
+{% endblock %}
+
+{% block tail_scripts %}
+<script type="text/javascript" src="/js/reg.js"></script>
+<script type="text/javascript">
+    wait();
+</script>
+{% endblock %}
