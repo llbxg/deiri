@@ -1,0 +1,22 @@
+{% extends './template.html' %}
+
+{% block content %}
+<div class='h1'><i class="material-icons">pan_tool</i>Manual</div>
+<div class="line">
+    <div class="tag">member</div>
+    <select id="memberList">
+    <option value="">Who are u ?</option>
+    </select>
+        <input type="button" class="btn" onclick="deiri()" value="出入">
+    </div>
+<br>
+{% include "./parts/footer.html" %}
+{% endblock %}
+
+{% block tail_scripts %}
+<script type="text/javascript" src="/js/manual.js"></script>
+<script type="text/javascript">
+    wait();
+    getAllMember();
+</script>
+{% endblock %}
