@@ -1,0 +1,6 @@
+Eel==0.14.0
+Jinja2==2.11.2
+nfcpy==1.0.3
+pygame==1.9.6
+# schedule==0.6.0
+# pysmb==1.2.5
