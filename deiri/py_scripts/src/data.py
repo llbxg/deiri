@@ -8,6 +8,7 @@ import sqlite3
 import sys
 
 import eel
+import pandas as pd
 
 with contextlib.redirect_stdout(None):
     # 🧜 Memo - terminalに出る "Hello from the pygame community." を消すため
@@ -119,8 +120,7 @@ class Handle(object):
         """
         入退室時の時刻を整える
         """
-        dt_now = datetime.datetime.now()
-        self.dt = [dt_now.year, dt_now.month, dt_now.day, dt_now.hour, dt_now.minute, self.number]
+        self.dt = [datetime.datetime.now(), self.number, True]
 
     def _write_csv(self,add=None):
         """
@@ -130,7 +130,7 @@ class Handle(object):
             with open(self.path_csv, 'a', newline="", encoding='utf_8_sig') as f:
                 writer = csv.writer(f, delimiter=",")
                 if add is not None:
-                    self.dt.append(add)
+                    self.dt[2]=add
                 writer.writerow(self.dt)
 
     def _make_display(self):
@@ -142,7 +142,7 @@ class Handle(object):
                 self.sound_ok.play()  # 📢
 
             hour = datetime.datetime.now().hour
-            if today(self.path).count(self.number)%2==0:
+            if (today(self.path) == self.number).sum()%2==0:
                 greeting = 'お疲れさまでした'
             elif hour < 10:
                 greeting = 'おはようございます'
@@ -165,7 +165,7 @@ class EasyHandle(Handle):
         super().__init__(None, path)
         self.user_name, self.number = name, number
         self._make_log()
-        self._write_csv("No Card")
+        self._write_csv(False)
         self._make_display()
 
 # ---
@@ -210,16 +210,14 @@ def today(path):
         本日分のデータ
     """
     path_log = os.path.join(path, 'data', 'log.csv')
-    with open(path_log, 'r', newline='', encoding='utf-8-sig') as f:
-        dt_now = datetime.datetime.now()
-        reader = csv.reader(f)
-        dts=[]
+    df = pd.read_csv(path_log,header=None, names=['date','number','card'])
+    df['date']=pd.to_datetime(df['date'])
 
-        for row in reader:
-            if all([ now==int(past) for (now, past) in zip([dt_now.year, dt_now.month, dt_now.day], [row[0], row[1], row[2]])]):
-                dts.append(row[5])
+    td = datetime.datetime.now().replace(hour=0, minute=0, second=0,microsecond=0)
+    #tm = td+datetime.timedelta(days=1)
+    df = df[(td <= df['date'])]
 
-    return dts
+    return df['number']
 
 def room(path):
     """
@@ -237,16 +235,17 @@ def room(path):
     """
     name_list = get_users_name(path)
 
-    dts = today(path)
+    df = today(path)
+    f = lambda x: x%2!=0
+
+    df = df.value_counts()
 
     in_room = []
-    for number in list(set(dts)):
-        if dts.count(number)%2 != 0:
-            try:
-                in_room.append(name_list[str(number)])
-            except KeyError:
-                pass
-
+    for number in df[df.apply(f)].index.to_list():
+        try:
+            in_room.append(name_list[str(number)])
+        except KeyError:
+            pass
     return in_room
 
 def get_users_name(path):
@@ -341,3 +340,6 @@ def delete_user(number, path):
         conn.commit()
     success = False if before_datas == after_datas else True
     return success
+
+if __name__ == "__main__":
+    path = os.path.join(sys.argv[1],'.deiri')
