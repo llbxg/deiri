@@ -18,6 +18,7 @@
     "dist:rp":"electron-builder --dir --armv7l --linux deb"
   },
   "dependencies": {
+    "flatpickr": "^4.6.9",
     "python-shell": "^2.0.2"
   },
   "devDependencies": {
