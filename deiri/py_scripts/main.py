@@ -12,6 +12,8 @@ from src.card import Card
 from src.data import delete_user, EasyHandle, get_users_name, register_user, room
 from src.startup import start_up
 
+from src.reservation import resd, tdd, getdated, delscheduled
+
 # init
 PATH_USER_DATA = start_up(sys.argv)
 
@@ -97,4 +99,23 @@ def run():
 
 
 if __name__ == "__main__":
+    # Res
+    @eel.expose
+    def res(start, finish, number):
+        resd(PATH_USER_DATA, start, finish, number)
+
+    @eel.expose
+    def timedate():
+        return tdd(PATH_USER_DATA)
+
+    @eel.expose
+    def getdate(y, m, d):
+        return getdated(PATH_USER_DATA, y, m, d)
+
+    @eel.expose
+    def delschedule(a):
+        delscheduled(PATH_USER_DATA, a)
+        return True
+
+
     run()
