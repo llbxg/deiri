@@ -382,3 +382,9 @@ select{
 select:focus{
     outline: none;
 }
+
+.unique-contents{
+    font-size: var(--font-size-big);
+    margin-left: 30px;
+    text-decoration: none;
+}
