@@ -127,12 +127,10 @@ function getMembers(){
     let a = eel.timedate()();
 
     a.then(function (member) {
-        console.log(member)
         for (let number in member){
             let div = document.createElement('div');
             div.className = 'member';
             div.setAttribute('name', number)
-            console.log(member[number]);
             div.textContent = member[number].replace('\u3000','');
             m.appendChild(div);
         }
@@ -145,7 +143,6 @@ function getAllMember(){
     let mem = document.getElementById('memberList');
     let o = eel.check_all_users()();
     o.then(function (member) {
-        console.log(member)
         for (let number in member){
             const option = document.createElement('option');
             option.setAttribute("value",`${number},${member[number]}`);
@@ -196,3 +193,40 @@ function clean() {
     let data = document.getElementById('memberList');
     data.value = '';
 }
+
+// User情報の削除
+function del (){
+    const element = document.getElementById( "list" ) ;
+    const  radioNodeList = element.radio ;
+    const start = radioNodeList.value;
+    console.log(start);
+    if ( start !== "" ) {
+        const s = start.replace(/\s+/g, "").split(',');
+        console.log(start[0])
+        const result = confirm(`${s[0]}/${s[1]}/${s[2]}の${s[3]}時${s[4]}分からの予定を消去します。`);
+        if (result){
+            const comm = document.getElementById('display');
+            let r = eel.delschedule(start)();
+            r.then((b)=>{
+                (async () => {
+                    if(b){
+                        let m= document.getElementById('list');
+                        m.textContent = null;
+                        getAllMember();
+                        comm.textContent = "Successful"
+                        await sleep(1*4000);
+                    }else{
+                        comm.textContent = "Failed"
+                        await sleep(1*4000);
+                    }
+                    comm.textContent = ""
+
+                })();
+
+            }, err=>{
+                console.log("somthing went to wrong", err)
+            })
+
+        }
+    }
+};
