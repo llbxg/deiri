@@ -66,14 +66,19 @@ def getdated(path, y, m, d):
     return new_df_1.to_list() if len(new_df_1)!=0 else []
 
 def delscheduled(path, a):
-    y, mo, d, h, m = [int(x) for x in a.split(',')]
-    d_0 = datetime.datetime(y, mo, d, h, m)
+    try:
+        y, mo, d, h, m = [int(x) for x in a.split(',')]
+        d_0 = datetime.datetime(y, mo, d, h, m)
 
-    path_res = os.path.join(path, 'data', 'res.csv')
-    df = pd.read_csv(path_res,header=None, names=['start','finish','number'])
-    df['start']=pd.to_datetime(df['start'])
-    df['finish']=pd.to_datetime(df['finish'])
+        path_res = os.path.join(path, 'data', 'res.csv')
+        df = pd.read_csv(path_res,header=None, names=['start','finish','number'])
+        df['start']=pd.to_datetime(df['start'])
+        df['finish']=pd.to_datetime(df['finish'])
 
-    df = df[d_0 !=df['start']]
-    df.to_csv(path_res, header=False, index=False)
+        df = df[d_0 !=df['start']]
+        df.to_csv(path_res, header=False, index=False)
 
+        return True
+
+    except:
+        return False
