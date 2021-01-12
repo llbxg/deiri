@@ -29,6 +29,10 @@ from src.app import log_app
 log_app.setLevel(logging.INFO)
 
 
+@eel.expose
+def count_checkbox(n):
+    count_click(n)
+
 # for main - 在室状況の確認
 @eel.expose
 def room_members():
@@ -114,8 +118,7 @@ if __name__ == "__main__":
 
     @eel.expose
     def delschedule(a):
-        delscheduled(PATH_USER_DATA, a)
-        return True
+        return delscheduled(PATH_USER_DATA, a)
 
 
     run()

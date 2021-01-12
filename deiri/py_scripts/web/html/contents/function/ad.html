@@ -1,0 +1,46 @@
+{% macro generate_contents_1(n, title, tag, description, date, place, src, comp=0) %}
+{% if comp != 0 %}
+<div class='contents small'>
+{% else %}
+<div class='contents'>
+{% endif %}
+    <input id="acd-check{{n}}" class="acd-check" name="ad" type="checkbox" onchange="countAdClick({{n}})">
+    <label class="acd-label" for="acd-check{{n}}">
+        {{title}}
+        {% if tag == "a" %}
+        <div class='cat hissu'>必須</div>
+        {% elif tag == "b" %}
+        <div class='cat sodan'>相談</div>
+        {% elif tag == "c" %}
+        <div class='cat rensyu'>面接練習</div>
+        {% else %}
+        <div class='cat gyokai'>業界研究</div>
+        {% endif %}
+    </label>
+    <div class="acd-content">
+        <div class='main'>
+            <div class='describe'>{{description}}</div>
+            <div class="ses">
+                <i class="material-icons">event_note</i>
+                {% for d in date %}
+                    {% if '～' in d %}
+                    <div class="hiduke ren">{{d}}</div>
+                    {% else %}
+                    <div class="hiduke">{{d}}</div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+            <div class="ses">
+                <i class="material-icons">place</i>
+                <div class="basho">
+                    {{place}}
+                </div>
+            </div>
+        </div>
+        <div class="sub">
+            <img class="qr" src="/image/_ad_/{{src}}">
+        </div>
+    </div>
+</div>
+{% endmacro %}
