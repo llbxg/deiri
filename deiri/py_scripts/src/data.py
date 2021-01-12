@@ -243,10 +243,10 @@ def room(path):
     in_room = []
     for number in df[df.apply(f)].index.to_list():
         try:
-            in_room.append(name_list[str(number)])
+            in_room.append((number, name_list[str(number)]))
         except KeyError:
             pass
-    return in_room
+    return dict(in_room)
 
 def get_users_name(path):
     """
