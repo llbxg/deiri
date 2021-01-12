@@ -1,0 +1,139 @@
+
+#calendar {
+    font-size: var(--font-size-normal);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section {
+    margin: 10px;
+}
+
+table {
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td {
+    height: 1.5em;
+    width: 1.5em;
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+td:hover{
+    color: var(--color-theme-3);
+}
+
+#today{
+    text-decoration: underline;
+}
+
+td:first-child {
+    color: red;
+}
+td:first-child:hover {
+    color: var(--color-theme-3);
+}
+
+td:last-child {
+    color: royalblue;
+}
+
+td:last-child:hover {
+    color: var(--color-theme-3);
+}
+
+td.is-disabled {
+    color: #ccc;
+}
+
+#cale-sche{
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:no-wrap;
+}
+#calendar-box{
+    margin: 0;
+    width: 50%;
+}
+#schedule-box{
+    margin: 0;
+    width: 50%;
+    position: relative;
+}
+#bar{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.cale-btn{
+    font-size: var(--font-size-small);
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    padding: 0 10px;
+    text-decoration: none;
+    border: solid 2px var(--color-font-1);
+    border-radius: 6px;
+    transition: .4s;
+    margin-right: 20px;
+    font-size: calc(var(--font-size-normal) - 5px);
+}
+.cale-btn:hover {
+    background: var(--color-theme-2);
+    color: white;
+}
+
+.cale-btn:focus {
+    outline:0;
+}
+#prev{
+    margin-left: auto;
+}
+#next{
+    margin-right: auto;
+}
+#when{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+#year, #month{
+    text-align: center;
+    width: 50%;
+}
+#del-btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+label.radio-btn{
+    width: 100%;
+}
+
+#list{
+    height: 10em;
+    margin: 0;
+    overflow: scroll;
+
+    font-size: var(--font-size-small);
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#date{
+    display: flex;
+    flex-direction: row;
+}
+
+#y, #d, #m{
+    margin-right: 0.5em;
+    margin-bottom: 5px;
+}

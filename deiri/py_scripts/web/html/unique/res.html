@@ -1,0 +1,58 @@
+{% extends './template.html' %}
+
+{% block content %}
+
+<div class='h1'><i class="material-icons">today</i>Schedule</div>
+<div id='cale-sche'>
+    <div id='calendar-box'>
+        <div id='bar'>
+            <button id="prev" class='cale-btn' type="button"><</button>
+            <div id='when'></div>
+            <button id="next" class='cale-btn' type="button">></button>
+        </div>
+
+        <div id="calendar"></div>
+    </div>
+    <div id='schedule-box'>
+        <div id="schedule"></div>
+        <form id="list"></form>
+        <div id='del-btn'  class="line">
+            <input class="btn delete" type="button" onclick="del()" value="delete">
+
+        </div>
+    </div>
+</div>
+
+<div class='h1'><i class="material-icons">event_seat</i>Reservation</div>
+
+<div class="line">
+    <div class="tag">date</div>
+    <input id="calendarStart" data-mindate=today type="text" />~
+    <input id="calendarFinish" data-mindate=today type="text" />
+    <input type="hidden"  id="start" value="">
+    <input type="hidden"  id="finish" value="">
+</div>
+
+<div class="line">
+    <div class="tag">member</div>
+    <select id="memberList">
+    <option value="">Who are u ?</option>
+    </select>
+        <input type="button" class="btn" onclick="send()" value="予約">
+</div>
+
+
+
+<script type="text/javascript" src="/js/unique/res.js"></script>
+
+<br>
+
+{% include "./parts/footer.html" %}
+{% endblock %}
+
+{% block tail_scripts %}
+<link rel ="stylesheet" href="/css/unique/res.css"/>
+<script type="text/javascript">
+    wait(120);
+</script>
+{% endblock %}

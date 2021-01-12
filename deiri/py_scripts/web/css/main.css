@@ -44,7 +44,6 @@ Rule
     /* Support for Safari and Chrome. */
     text-rendering: optimizeLegibility;
 
-    margin-top: 12px;
     margin-right: 8px;
 }
 
@@ -244,12 +243,16 @@ footer .msg{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    user-select: none; /* CSS3 */
+    -webkit-user-select: none;
 }
 
 .member{
+    display: flex;
+    flex-direction: row;
     margin:5px;
     margin-right: 15px;
-    padding: 0px 10px 7px 10px;
+    padding: 0px 10px 7px 0px;
     background:linear-gradient(transparent 80%, var(--color-theme-2) 35% );
 }
 
@@ -381,4 +384,10 @@ select{
 }
 select:focus{
     outline: none;
+}
+
+.unique-contents{
+    font-size: var(--font-size-big);
+    margin-left: 30px;
+    text-decoration: none;
 }

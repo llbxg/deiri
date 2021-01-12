@@ -18,6 +18,10 @@ def start_up(args):
         with open(csvname, mode='w') as f:
             f.write('')
 
+    if not (os.path.exists(csvname :=os.path.join(path_data, 'res.csv'))):
+        with open(csvname, mode='w') as f:
+            f.write('')
+
     if not (os.path.exists(csvname :=os.path.join(os.environ.get('DEIRI_AD_TEMP'), 'ad.csv'))):
         with open(csvname, mode='w') as f:
             f.write('')
