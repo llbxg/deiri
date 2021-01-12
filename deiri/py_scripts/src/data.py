@@ -142,7 +142,8 @@ class Handle(object):
                 self.sound_ok.play()  # 📢
 
             hour = datetime.datetime.now().hour
-            if (today(self.path) == self.number).sum()%2==0:
+            df = today(self.path)
+            if df.value_counts()[int(self.number)]%2==0:
                 greeting = 'お疲れさまでした'
             elif hour < 10:
                 greeting = 'おはようございます'
