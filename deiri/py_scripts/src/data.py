@@ -143,7 +143,7 @@ class Handle(object):
 
             hour = datetime.datetime.now().hour
             df = today(self.path)
-            if df.value_counts()[int(self.number)]%2==0:
+            if df.value_counts()[(self.number)]%2==0:
                 greeting = 'お疲れさまでした'
             elif hour < 10:
                 greeting = 'おはようございます'
@@ -211,7 +211,7 @@ def today(path):
         本日分のデータ
     """
     path_log = os.path.join(path, 'data', 'log.csv')
-    df = pd.read_csv(path_log,header=None, names=['date','number','card'])
+    df = pd.read_csv(path_log,header=None, names=['date','number','card'], dtype={1: str})
     df['date']=pd.to_datetime(df['date'])
 
     td = datetime.datetime.now().replace(hour=0, minute=0, second=0,microsecond=0)
