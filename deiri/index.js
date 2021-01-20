@@ -25,7 +25,7 @@ function createWindow () {
 
     win.loadFile(path.join(__dirname, 'py_scripts/web/index.html'))
 
-    win.webContents.openDevTools()
+    //win.webContents.openDevTools()
 
     win.once('ready-to-show', () => {
         win.show()
