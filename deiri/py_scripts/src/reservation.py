@@ -21,7 +21,7 @@ def resd(path, start, finish, number):
         ans1 = df[~((s < df['start']) & (f <= df['start']))]
         ans2 = df[~((s >= df['finish']) & (f > df['finish']))]
 
-        if (len(ans1)==0 or len(ans2) == 0):
+        if (len(ans1)+len(ans2)==len(df)):
             #df.append()
             #df.to_csv(path_res,header=False, index=False)
             with open(path_res, 'a', newline="", encoding='utf_8_sig') as f:
