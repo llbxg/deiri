@@ -7,6 +7,7 @@ import time
 
 import eel
 
+from src.ad import count_click
 from src.app import App
 from src.card import Card
 from src.data import delete_user, EasyHandle, get_users_name, register_user, room

@@ -4,7 +4,7 @@
 {% else %}
 <div class='contents'>
 {% endif %}
-    <input id="acd-check{{n}}" class="acd-check" name="ad" type="checkbox" onchange="countAdClick({{n}})">
+    <input id="acd-check{{n}}" class="acd-check" name="ad" type="checkbox" onchange="eel.count_checkbox({{n}})">
     <label class="acd-label" for="acd-check{{n}}">
         {{title}}
         {% if tag == "a" %}
@@ -13,6 +13,8 @@
         <div class='cat sodan'>相談</div>
         {% elif tag == "c" %}
         <div class='cat rensyu'>面接練習</div>
+        {% elif tag == "d" %}
+        <div class='cat semi'>セミナー</div>
         {% else %}
         <div class='cat gyokai'>業界研究</div>
         {% endif %}

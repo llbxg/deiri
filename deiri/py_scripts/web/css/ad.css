@@ -44,6 +44,11 @@
     background-color: var(--color-theme-4);
 }
 
+.semi{
+    color: var(--color-background);
+    background-color: var(--color-theme-1);
+}
+
 .describe{
     margin-bottom: 10px;
     font-size: var(--font-size-small);
